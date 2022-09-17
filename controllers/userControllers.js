@@ -33,4 +33,11 @@ const updateUser = async (req, res, next) => {
   res.send(user);
 };
 
+const createMeeting = async (req, res, next) => {
+  res.send();
+};
+const login = async (req, res, next) => {
+  res.send();
+};
+
 module.exports = { getUserData, postUserData, updateUser };
