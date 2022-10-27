@@ -1,7 +1,7 @@
 const getUserData = (req, res, next) => {
   res.json({
     user: ["shivam", "cez", "creative", "expertz"],
-    message: "hello duniya aaleo kive hoo kaim",
+    message: "hello duniya aaleo kive hoo kaim bade fuddu oo tuc",
   });
 };
 
