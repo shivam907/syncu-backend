@@ -2,7 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const path = require("path");
-
+require("dotenv").config();
 const app = express();
 
 const userRoutes = require("./routes/userRoutes");
@@ -27,8 +27,7 @@ app.use("/api", userRoutes);
 
 app.listen(0907);
 
-const url =
-  "mongodb+srv://shivam:1234@users.rt3s6dm.mongodb.net/?retryWrites=true&w=majority";
+const url = process.env.URL;
 
 try {
   mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true });
