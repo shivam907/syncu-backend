@@ -1,10 +1,13 @@
 const User = require("../models/User");
 
-const getUserData = (req, res, next) => {
-  res.json({
-    user: ["shivam", "cez", "creative", "expertz"],
-    message: "hello duniya aaleo kive hoo kaim bade fuddu oo tuc",
-  });
+const getUserData = async (req, res, next) => {
+  try {
+    const user = await User.find({});
+    res.json(user);
+  } catch (err) {
+    console.log(err.message);
+    res.status(402).send("ERROR");
+  }
 };
 
 const postUserData = async (req, res, next) => {
@@ -13,7 +16,8 @@ const postUserData = async (req, res, next) => {
     await user.save();
     return res.json(user);
   } catch (err) {
-    console.log(err);
+    console.log(err.message);
+    res.status(400).send("Error");
   }
 };
 
