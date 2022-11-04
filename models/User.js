@@ -38,6 +38,27 @@ const userSchema = new mongoose.Schema({
     minLength: 7,
     trim: true,
   },
+  groups: [
+    {
+      type: String,
+    },
+  ],
+  meetings: {
+    personalMeetings: [
+      {
+        personalMeetingObjectId: {
+          type: String,
+        },
+      },
+    ],
+    GroupMeetings: [
+      {
+        groupMeetingObjectId: {
+          type: String,
+        },
+      },
+    ],
+  },
 });
 
 const User = mongoose.model("User", userSchema);
