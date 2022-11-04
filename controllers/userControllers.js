@@ -21,4 +21,16 @@ const postUserData = async (req, res, next) => {
   }
 };
 
-module.exports = { getUserData, postUserData };
+const updateUser = async (req, res, next) => {
+  const _id = req.params.id;
+  const updates = Object.keys(req.body);
+  const user = await User.findById(_id);
+
+  updates.forEach((update) => (user[update] = req.body[update]));
+
+  await user.save();
+
+  res.send(user);
+};
+
+module.exports = { getUserData, postUserData, updateUser };
