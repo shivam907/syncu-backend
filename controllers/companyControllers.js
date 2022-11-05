@@ -26,7 +26,7 @@ const updateCompany = async (req, res, next) => {
     const _id = req.params.id;
     const updates = Object.keys(req.body);
     const company = await Company.findById(_id);
-
+    // console.log(company.meetings);
     updates.forEach((update) => (company[update] = req.body[update]));
     await company.save();
     return res.send(company);

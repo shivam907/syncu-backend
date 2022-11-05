@@ -14,6 +14,12 @@ const userSchema = new mongoose.Schema({
     required: true,
     trim: true,
   },
+  username: {
+    type: String,
+    required: true,
+    unique: true,
+    trim: true,
+  },
   email: {
     type: String,
     required: true,
@@ -46,9 +52,14 @@ const userSchema = new mongoose.Schema({
   meetings: {
     personalMeetings: [
       {
-        personalMeetingObjectId: {
+        name: {
           type: String,
         },
+        with: [
+          {
+            type: Object,
+          },
+        ],
       },
     ],
     GroupMeetings: [

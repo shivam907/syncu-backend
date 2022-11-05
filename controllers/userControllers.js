@@ -27,6 +27,10 @@ const updateUser = async (req, res, next) => {
     const updates = Object.keys(req.body);
     const user = await User.findById(_id);
 
+    console.log(user.meetings.personalMeetings[0]);
+
+    console.log(typeof user._id);
+
     updates.forEach((update) => (user[update] = req.body[update]));
     await user.save();
     return res.send(user);
