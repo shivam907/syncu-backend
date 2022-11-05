@@ -51,9 +51,9 @@ const login = async (req, res, next) => {
       req.body.password
     );
     res.send(user);
-  } catch (e) {
-    console.log(e);
-    res.status(400).send(e.message);
+  } catch (err) {
+    // console.log(e);
+    res.status(400).send(err.message);
   }
 };
 
