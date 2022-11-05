@@ -32,16 +32,6 @@ const companySchema = new mongoose.Schema({
   ],
   users: [
     {
-      firstName: {
-        type: String,
-        required: true,
-        trim: true,
-      },
-      lastName: {
-        type: String,
-        required: true,
-        trim: true,
-      },
       email: {
         type: String,
         required: true,
@@ -53,10 +43,9 @@ const companySchema = new mongoose.Schema({
           }
         },
       },
-      mobileNumber: {
-        type: Number,
+      userName: {
+        type: String,
         required: true,
-        length: 10,
         unique: true,
         trim: true,
       },
