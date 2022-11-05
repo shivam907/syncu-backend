@@ -25,9 +25,11 @@ const companySchema = new mongoose.Schema({
     minLength: 7,
     trim: true,
   },
-  groups: {
-    type: String,
-  },
+  groups: [
+    {
+      type: String,
+    },
+  ],
   users: [
     {
       firstName: {

@@ -6,6 +6,7 @@ require("dotenv").config();
 const app = express();
 
 const userRoutes = require("./routes/userRoutes");
+const companyRoutes = require("./routes/companyRoutes");
 
 app.set("view engine", "ejs");
 app.set("views", "views");
@@ -24,6 +25,7 @@ app.use((req, res, next) => {
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/api", userRoutes);
+app.use("/api", companyRoutes);
 
 app.use("/*", (req, res, next) => {
   res.render("index.ejs");
