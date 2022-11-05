@@ -22,20 +22,24 @@ const postUserData = async (req, res, next) => {
 };
 
 const updateUser = async (req, res, next) => {
-  const _id = req.params.id;
-  const updates = Object.keys(req.body);
-  const user = await User.findById(_id);
+  try {
+    const _id = req.params.id;
+    const updates = Object.keys(req.body);
+    const user = await User.findById(_id);
 
-  updates.forEach((update) => (user[update] = req.body[update]));
-
-  await user.save();
-
-  res.send(user);
+    updates.forEach((update) => (user[update] = req.body[update]));
+    await user.save();
+    return res.send(user);
+  } catch (err) {
+    console.log(err);
+    res.status(400).send("Error Updating");
+  }
 };
 
 const createMeeting = async (req, res, next) => {
   res.send();
 };
+
 const login = async (req, res, next) => {
   res.send();
 };
