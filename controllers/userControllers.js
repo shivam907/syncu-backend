@@ -45,11 +45,16 @@ const createMeeting = async (req, res, next) => {
 };
 
 const login = async (req, res, next) => {
-  const user = await User.findByCredentials(
-    req.body.userName,
-    req.body.password
-  );
-  res.send(user);
+  try {
+    const user = await User.findByCredentials(
+      req.body.userName,
+      req.body.password
+    );
+    res.send(user);
+  } catch (e) {
+    console.log(e);
+    res.status(400).send(e);
+  }
 };
 
 module.exports = { getUserData, postUserData, updateUser, login };
