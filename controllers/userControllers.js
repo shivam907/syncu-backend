@@ -24,13 +24,13 @@ const postUserData = async (req, res, next) => {
 
 const updateUser = async (req, res, next) => {
   try {
-    const _id = req.params.id;
+    const userName = req.params.userName;
     const updates = Object.keys(req.body);
-    const user = await User.findById(_id);
+    const user = await User.findOne({ userName });
 
-    console.log(user.meetings.personalMeetings[0]);
+    // console.log(user.meetings.personalMeetings[0]);
 
-    console.log(typeof user._id);
+    // console.log(typeof user._id);
 
     updates.forEach((update) => (user[update] = req.body[update]));
     await user.save();
