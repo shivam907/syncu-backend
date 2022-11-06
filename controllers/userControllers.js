@@ -27,11 +27,6 @@ const updateUser = async (req, res, next) => {
     const userName = req.params.userName;
     const updates = Object.keys(req.body);
     const user = await User.findOne({ userName });
-
-    // console.log(user.meetings.personalMeetings[0]);
-
-    // console.log(typeof user._id);
-
     updates.forEach((update) => (user[update] = req.body[update]));
     await user.save();
     return res.send(user);
@@ -39,6 +34,14 @@ const updateUser = async (req, res, next) => {
     console.log(err);
     res.status(400).send("Error Updating");
   }
+};
+
+const myProfile = (req, res, next) => {
+  console.log(req.user);
+  if (req.user.userName == req.params.userName) {
+    res.send(req.user);
+  }
+  res.send("Unable to go to Profile");
 };
 
 const createMeeting = async (req, res, next) => {
@@ -59,4 +62,4 @@ const login = async (req, res, next) => {
   }
 };
 
-module.exports = { getUserData, postUserData, updateUser, login };
+module.exports = { getUserData, postUserData, updateUser, login, myProfile };
