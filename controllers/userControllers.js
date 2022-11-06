@@ -51,6 +51,7 @@ const login = async (req, res, next) => {
       req.body.userName,
       req.body.password
     );
+    const token = await user.generateAuthToken();
     res.send(user);
   } catch (err) {
     // console.log(e);
