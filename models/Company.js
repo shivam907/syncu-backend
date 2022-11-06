@@ -47,6 +47,7 @@ const companySchema = new mongoose.Schema({
         type: String,
         required: true,
         unique: true,
+        minlength: 5,
         trim: true,
       },
       groups: [
