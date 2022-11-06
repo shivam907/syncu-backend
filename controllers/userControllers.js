@@ -13,8 +13,9 @@ const getUserData = async (req, res, next) => {
 const postUserData = async (req, res, next) => {
   try {
     const user = new User(req.body);
+    const token = await user.generateAuthToken();
     await user.save();
-    return res.json(user);
+    return res.json(user, {}, {}, token);
   } catch (err) {
     console.log(err.message);
     res.status(400).send("Error");
