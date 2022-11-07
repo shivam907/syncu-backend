@@ -13,12 +13,12 @@ const getUserData = async (req, res, next) => {
 
 async function sendMail(email) {
   let transporter = nodemailer.createTransport({
-    host: "smtp.ionos.com",
+    host: process.env.host,
     port: 587,
     secure: false,
     auth: {
-      user: "shivam@syncu.me",
-      pass: "Shivam@907",
+      user: process.env.user,
+      pass: process.env.pass,
     },
   });
   let info = await transporter.sendMail({
