@@ -22,7 +22,7 @@ async function sendMail(email) {
     },
   });
   let info = await transporter.sendMail({
-    from: "shivam@syncu.me",
+    from: process.env.user,
     to: email,
     subject: "kida ✔",
     text: "Hello duniya?",
